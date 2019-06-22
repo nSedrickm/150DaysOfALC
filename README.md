@@ -1,2 +1,2 @@
 # 150DaysOfALC
-Google Africa Scholarship Journey 
+My Google Africa 2019 Scholarship Journey with Andela and Pluralsight
