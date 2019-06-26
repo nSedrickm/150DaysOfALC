@@ -2,7 +2,7 @@
 
 //card variables 
 
-let suits = [ "Hearts","Clubs","Diamonds","Spades" ],
+let suits = ["Hearts","Clubs","Diamonds","Spades" ],
     values = ["Ace" , "King", "Queen" , "Jack",
               "Ten","Nine","Eight","Seven"
               ,"Six","Five","Four","Three","Two"];
@@ -24,7 +24,7 @@ let gameStarted = false,
     deck = [];
 
 
-    hitButton.style.display = "none";
+    hitButton.style.display = 'none';
     stayButton.style.display = "none";
     showStatus();
 
@@ -166,7 +166,7 @@ let gameStarted = false,
 
 function showStatus() {
     if (!gameStarted) {
-        textArea.innerText ="Welcome to Blackjack!";
+        textArea.innerText ="Welcome! wanna play!";
         return;
     }
 
@@ -185,5 +185,19 @@ function showStatus() {
     textArea.innerText = "Dealer has:\n" +
         dealerCardString + "(score:" + dealerScore + ")\n\n" +
         "Player has:\n"  + "(score:" + playerScore + ")\n\n" ;
+    
+    if (gameOver) {
+    if (playerWon) {
+      textArea.innerText += "YOU WIN!";
+    }
+    else {
+      textArea.innerText += "DEALER WINS";
+    }
+    newGameButton.style.display = 'inline';
+    hitButton.style.display = 'none';
+    stayButton.style.display = 'none';
+  }
 
 }
+
+
