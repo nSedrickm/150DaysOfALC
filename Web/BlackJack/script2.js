@@ -1,8 +1,6 @@
 //
 // Blackjack
 // by Mark Zamoyta
-//
-
 // Card variables
 let suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades'],
     values = ['Ace', 'King', 'Queen', 'Jack', 
@@ -170,7 +168,7 @@ function checkForEndOfGame() {
 
 function showStatus() {
   if (!gameStarted) {
-    textArea.innerText = 'Welcome! Wanna Play?';
+    textArea.innerText = 'Welcome to Blackjack';
     return;
   }
   

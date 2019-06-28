@@ -4,8 +4,8 @@
 
 let suits = ["Hearts","Clubs","Diamonds","Spades" ],
     values = ["Ace" , "King", "Queen" , "Jack",
-              "Ten","Nine","Eight","Seven"
-              ,"Six","Five","Four","Three","Two"];
+              "Ten","Nine","Eight","Seven",
+              "Six","Five","Four","Three","Two"];
 
 //DOM Variables 
 let textArea = document.getElementById("text-area"),
@@ -23,8 +23,7 @@ let gameStarted = false,
     playerScore = 0,
     deck = [];
 
-
-    hitButton.style.display = 'none';
+    hitButton.style.display = "none";
     stayButton.style.display = "none";
     showStatus();
 
@@ -39,8 +38,8 @@ let gameStarted = false,
         playerCards = [getNextCard(), getNextCard() ];
 
         newGameButton.style.display = "none";
-        hitButton.style.display = "inline-block";
-        stayButton.style.display ="inline-block";
+        hitButton.style.display = "inline";
+        stayButton.style.display ="inline";
         showStatus();
     });
 
@@ -56,6 +55,7 @@ let gameStarted = false,
         showStatus();
     });
 
+
     function createDeck() {
         let deck = [];
         for ( let suitIdx = 0 ; suitIdx < suits.length; suitIdx++) {
@@ -69,8 +69,6 @@ let gameStarted = false,
         }
         return deck;
     }
-  
-    //shuffle the deck of cards 
 
     function shuffleDeck(deck) {
         for ( let i = 0 ; i < deck.length ; i++) {
@@ -94,23 +92,23 @@ let gameStarted = false,
         case "Ace" :
         return 1;
         case "Two":
-           return 2;
-            case "Three":
-            return 3;
-            case "Four":
-               return 4;
-               case "Five":
-                   return 5;
-                   case "Six":
-                       return 6;
-                       case "Seven":
-                           return 7;
-                           case "Eight":
-                               return 8;
-                               case "Nine":
-                                   return 9;
-                               default:
-                                    return 10;
+        return 2;
+        case "Three":
+        return 3;
+        case "Four":
+        return 4;
+        case "Five":
+        return 5;
+        case "Six":
+        return 6;
+        case "Seven":
+        return 7;
+        case "Eight":
+        return 8;
+        case "Nine":
+        return 9;
+        default:
+        return 10;
        }
     }
 
@@ -136,16 +134,19 @@ let gameStarted = false,
     }
 
     function checkForEndOfGame() { 
+        
         updateScores();
+        
         if (gameOver) {
             //let dealer take cards 
             while ( dealerScore < playerScore
                      && playerScore <= 21 
-                     && dealerScore <= 21)
+                     && dealerScore <= 21) {   
                      dealerCards.push(getNextCard());
                      updateScores();
         }
-    }
+    } 
+    
     if (playerScore >21) { 
         playerWon = false; 
         gameOver = true; 
@@ -155,6 +156,7 @@ let gameStarted = false,
         gameOver = true;
     }
     else if (gameOver) {
+        
         if (playerScore > dealerScore) { 
             playerWon = true;
         }
@@ -164,7 +166,7 @@ let gameStarted = false,
     }
 }
 
-function showStatus() {
+    function showStatus() {
     if (!gameStarted) {
         textArea.innerText ="Welcome! wanna play!";
         return;
@@ -182,22 +184,23 @@ function showStatus() {
 
     updateScores();
 
-    textArea.innerText = "Dealer has:\n" +
+    textArea.innerText = 
+        "Dealer has:\n" +
         dealerCardString + "(score:" + dealerScore + ")\n\n" +
-        "Player has:\n"  + "(score:" + playerScore + ")\n\n" ;
+        
+        "Player has:\n" +
+        playerCardString + "(score:" + playerScore + ")\n\n" ;
     
     if (gameOver) {
-    if (playerWon) {
+     if (playerWon) {
       textArea.innerText += "YOU WIN!";
     }
     else {
       textArea.innerText += "DEALER WINS";
     }
-    newGameButton.style.display = 'inline';
-    hitButton.style.display = 'none';
-    stayButton.style.display = 'none';
+    newGameButton.style.display = "inline";
+    hitButton.style.display = "none";
+    stayButton.style.display = "none";
   }
 
 }
-
-
