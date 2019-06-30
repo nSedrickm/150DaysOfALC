@@ -200,7 +200,7 @@ let gameStarted = false,
     }
 
     updateScores();
-
+    
     textArea.innerText = 
         "Dealer has:\n" +
         dealerCardString + "(score:" + dealerScore + ")\n\n" +

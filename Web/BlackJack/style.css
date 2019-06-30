@@ -18,9 +18,9 @@ button{
     width:10%;
     background-color:red;
     border:1px solid black;
-    color:white;
+    color:black;
     padding:5px;
-    font-size:1em;
+    font-size:1.2em;
     border-radius:10px;
 }
 p{
