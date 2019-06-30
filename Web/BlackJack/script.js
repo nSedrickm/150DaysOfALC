@@ -136,40 +136,52 @@ let gameStarted = false,
 
     function checkForEndOfGame() { 
         
-        updateScores();
+    updateScores();
         
         if (gameOver) {
             //let dealer take cards 
             while ( dealerScore < playerScore
                      && playerScore <= 21 
                      && dealerScore <= 21) {   
-                     dealerCards.push(getNextCard())
-                 ;
+                     dealerCards.push(getNextCard());
                      updateScores();
         }
      }
             
 
-        if ( gameOver && dealerScore > 21 && playerScore <= 21 ){
+        if ( dealerScore > 21  && playerScore <= 21 ){
             dealerWon = false;
             playerWon = true; 
+            gameOver  = true;
             
         }
-        else if (gameOver && playerScore > 21 && dealerScore <= 21) {
-            dealerWon = true ;
+        else if (playerScore > 21 && dealerScore <= 21) {
             playerWon = false ;
+            dealerWon = true;
+            gameOver =true;    
         
-        }
-        else if (playerScore === dealerScore){
-            playerWon = false;
-            dealerWon = true ;
-        }
+        } 
+        
+        else if (gameOver) {
+            
+          if (playerScore === dealerScore){
+             playerWon = false;
+             dealerWon = true ;
+
+          }
+           else if (playerScore > dealerScore){
+            playerWon = true;
+            dealerWon = false;
+           }
+               
         else {
-            playerWon =false;
-            dealerWon =false;
+            playerWon = false;
+            dealerWon = false;
         }
-   
-}
+     }
+ }
+  
+
 
     function showStatus() {
     if (!gameStarted) {
