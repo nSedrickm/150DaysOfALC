@@ -16,7 +16,8 @@ let textArea = document.getElementById("text-area"),
 //Game variables 
 let gameStarted = false,
     gameOver = false,
-    playerWon = false,
+    playerWon= false,
+    dealerWon= false,
     dealerCards = [],
     playerCards = [],
     dealerScore = 0,
@@ -142,28 +143,32 @@ let gameStarted = false,
             while ( dealerScore < playerScore
                      && playerScore <= 21 
                      && dealerScore <= 21) {   
-                     dealerCards.push(getNextCard());
+                     dealerCards.push(getNextCard())
+                 ;
                      updateScores();
         }
-    } 
-    
-    if (playerScore >21) { 
-        playerWon = false; 
-        gameOver = true; 
-    }
-    else if (dealerScore > 21) { 
-        playerWon = false;
-        gameOver = true;
-    }
-    else if (gameOver) {
+     }
+            
+
+        if ( gameOver && dealerScore > 21 && playerScore <= 21 ){
+            dealerWon = false;
+            playerWon = true; 
+            
+        }
+        else if (gameOver && playerScore > 21 && dealerScore <= 21) {
+            dealerWon = true ;
+            playerWon = false ;
         
-        if (playerScore > dealerScore) { 
+        }
+        else if (playerScore === dealerScore){
             playerWon = false;
+            dealerWon = true ;
         }
         else {
-            playerWon = true;
+            playerWon =false;
+            dealerWon =false;
         }
-    }
+   
 }
 
     function showStatus() {
@@ -193,10 +198,11 @@ let gameStarted = false,
     
     if (gameOver) {
     if (playerWon) {
-      textArea.innerText += "DEALER WINS!";
+      textArea.innerText += "You Win!";
     }
+
     else {
-      textArea.innerText += "YOU WIN!";
+      textArea.innerText += "Dealer Wins!";
     }
     newGameButton.style.display = "inline";
     hitButton.style.display = "none";
