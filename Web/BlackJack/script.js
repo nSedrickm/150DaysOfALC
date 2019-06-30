@@ -158,10 +158,10 @@ let gameStarted = false,
     else if (gameOver) {
         
         if (playerScore > dealerScore) { 
-            playerWon = true;
+            playerWon = false;
         }
         else {
-            playerWon = false;
+            playerWon = true;
         }
     }
 }
@@ -189,14 +189,14 @@ let gameStarted = false,
         dealerCardString + "(score:" + dealerScore + ")\n\n" +
         
         "Player has:\n" +
-        playerCardString + "(score:" + playerScore + ")\n\n" ;
+        playerCardString+ "(score:" + playerScore + ")\n\n" ;
     
     if (gameOver) {
-     if (playerWon) {
-      textArea.innerText += "YOU WIN!";
+    if (playerWon) {
+      textArea.innerText += "DEALER WINS!";
     }
     else {
-      textArea.innerText += "DEALER WINS";
+      textArea.innerText += "YOU WIN!";
     }
     newGameButton.style.display = "inline";
     hitButton.style.display = "none";
